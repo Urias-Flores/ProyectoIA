@@ -243,15 +243,16 @@ export class Camera {
         keypoints.map(keypoint => ([-keypoint.x, -keypoint.y, -keypoint.z]));
     const dataset =
         new scatter.ScatterGL.Dataset([...pointsData, ...ANCHOR_POINTS]);
-
-
-    if(model.value == 3){
-      console.log(keypoints[1])
-      // keypoints.foreach(keypoint => {
-      //   xLabel.value = keypoint.x
-      //   yLabel.value = keypoint.y
-      //   zLabel.value = keypoint.z
-      // })
+        
+    const handDetected = handedness === 'Left' ? 0 : 1;
+    if(model.value == 3 && handSelected.value == handDetected){
+      const handPointSelected = handPoint.value
+      const keypoint = keypoints[handPointSelected]
+      if(keypoint != undefined){
+        xLabel.value = keypoint.x
+        yLabel.value = keypoint.y
+        zLabel.value = keypoint.z
+      }
     }
 
     ctxt.scatterGL.setPointColorer((i) => {
