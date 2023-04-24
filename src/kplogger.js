@@ -16,8 +16,8 @@ recordButton.onclick = ev => {
 export default function logKeypoints(pointsData) {
   if (logLength > 0 && recording) {
     // Do not log empty pointsData
-    if (pointsData.lenght > 0) return;
-    // Do not log data points to soon
+    if (pointsData.lenght == 0) return;
+    // Do not log data points too soon
     if (lastLogTime + logTimeSpread > Date.now()) return;
     // Log
     logLength--;
