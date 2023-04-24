@@ -2,6 +2,7 @@ import * as scatter from 'scatter-gl';
 
 import * as params from '../shared/params';
 import {isMobile} from '../shared/util';
+import logKeypoints from './kplogger';
 
 // These anchor points allow the hand pointcloud to resize according to its
 // position in the input.
@@ -244,7 +245,8 @@ export class Camera {
     const dataset =
         new scatter.ScatterGL.Dataset([...pointsData, ...ANCHOR_POINTS]);
 
-
+    // remove
+    logKeypoints(pointsData);
     if(model.value == 3){
       console.log(keypoints[1])
       // keypoints.foreach(keypoint => {
